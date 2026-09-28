@@ -1,0 +1,49 @@
+#server:
+#  port: 8888
+#
+#spring:
+#  application:
+#    name: config-server
+#
+## TODO Câu 1: Cấu hình nguồn lưu cấu hình (native/local hoặc git)
+##   - Gợi ý native: đọc các file trong thư mục ../config-repo của project
+##   - Gợi ý git   : trỏ tới một repository chứa các file cấu hình
+server:
+  port: 8888
+
+spring:
+  application:
+    name: config-server
+  profiles:
+    active: native
+  cloud:
+    config:
+      server:
+        native:
+          # Trỏ tới thư mục config-repo nằm ngang hàng với thư mục config-server
+          search-locations: C:\Users\MyPC\Downloads\base-project-dau-gio\config-repo
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+#Cach 2:
+#  server:
+#    port: 8888
+#
+#  spring:
+#    application:
+#      name: config-server
+#    cloud:
+#      config:
+#        server:
+#          git:
+#            uri: https://github.com/your-username/your-config-repo.git
+#            clone-on-start: true
+#            default-label: main
+#
+#  eureka:
+#    client:
+#      service-url:
+#        defaultZone: http://localhost:8761/eureka/

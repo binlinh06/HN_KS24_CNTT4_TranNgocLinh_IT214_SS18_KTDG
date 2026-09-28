@@ -1,0 +1,26 @@
+#server:
+#  port: 8761
+#
+#spring:
+#  application:
+#    name: eureka-server
+#
+## TODO Câu 1: Cấu hình Eureka Server
+##   - Server không tự đăng ký chính nó và không fetch registry
+##   - Dashboard: http://localhost:8761
+server:
+  port: 8761
+
+spring:
+  application:
+    name: eureka-server
+
+# Câu 1: Cấu hình Eureka Server
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    register-with-eureka: false  # Server không tự đăng ký chính nó
+    fetch-registry: false        # Không fetch registry từ service khác
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
